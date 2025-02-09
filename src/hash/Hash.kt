@@ -105,21 +105,37 @@ class HashBestAlbum {
 //    따라서 pop 장르의 [4, 1]번 노래를 먼저, classic 장르의 [3, 0]번 노래를 그다음에 수록합니다.
 
     fun solution(genres: Array<String>, plays: IntArray): IntArray {
-        var answer = intArrayOf()
+        val genreToPlayMap: HashMap<String, MutableList<Int>> = HashMap()
+
+        genres.forEachIndexed { i, genre ->
+            genreToPlayMap.getOrPut(genre) { mutableListOf() }.add(plays[i])
+        }
+        // classic: 500, 150, 800
+        // pop: 600, 2500
+        val keysSorted = genreToPlayMap.keys.sortedByDescending { genreToPlayMap[it]?.sum() } // [pop, classic]
+        println(keysSorted)
+
+        val answer = keysSorted.map { key ->
+            val valuesSorted =
+                genreToPlayMap[key]!!.sortedWith(compareByDescending<Int>({ it }).thenBy { plays.indexOf(it) })
+            val toTake = valuesSorted.take(2)
+
+            println(toTake)
+
+            return@map toTake
+        }.flatten().map { plays.indexOf(it) }.toIntArray()
 
         return answer
     }
 }
 
 fun main() {
-    val res = HashFindClothesCombination().betterSolution(
-        arrayOf(
-            arrayOf("yellow_hat", "headgear"),
-            arrayOf("blue_sunglasses", "eyewear"),
-            arrayOf("green_turban", "headgear")
-        )
+    val res = HashBestAlbum().solution(
+        genres = arrayOf("classic", "pop", "classic", "classic", "pop"),
+        plays = intArrayOf(500, 600, 150, 800, 2500),
     )
     println(res)
 }
+
 
 
