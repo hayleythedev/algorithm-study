@@ -54,7 +54,6 @@ fun main() {
         numbers = intArrayOf(4, 1, 2, 1),
         target = 4,
     )
-
     println(ans)
     println(ans2)
 }
