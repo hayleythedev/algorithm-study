@@ -19,7 +19,7 @@ package bruteForce
  *
  *
  */
-class minimumRectangle {
+class MinimumRectangle {
     fun solution(sizes: Array<IntArray>): Int {
         var w = 0
         var h = 0
