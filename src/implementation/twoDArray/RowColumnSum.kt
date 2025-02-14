@@ -1,4 +1,4 @@
-package implementation.math
+package implementation.twoDArray
 
 /**
  * BaekJoon #2738. 행렬 덧셈
