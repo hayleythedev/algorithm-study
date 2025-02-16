@@ -81,6 +81,15 @@ fun string() {
     str.replace("a[bc]+d?".toRegex(), "")
 }
 
+/**
+ * char
+ */
+fun char() {
+    val char = '1'
+
+    char.digitToInt() // 1
+}
+
 // -----------------------------------------------------------------
 fun main() {
     string()
