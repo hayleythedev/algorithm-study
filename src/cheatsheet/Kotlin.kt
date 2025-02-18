@@ -90,6 +90,15 @@ fun char() {
     char.digitToInt() // 1
 }
 
+/**
+ * 정렬
+ */
+fun sort() {
+    val list = listOf(listOf(1, 4), listOf(1, 3))
+
+    val sorted = list.sortedWith(compareBy({ it[0] }, { it[1] })) // [[1,3], [1,4]] 첫번째 원소로 정렬 후 두번째 원소로 정렬
+}
+
 // -----------------------------------------------------------------
 fun main() {
     string()
